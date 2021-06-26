@@ -16,6 +16,7 @@ import javafx.scene.control.Alert;
 public class InitialConfigurationScreen extends Application {
 
     private Scene start;
+    private Scene intro;
     private Scene game;
     protected String name;
     protected Difficulty level;
@@ -24,10 +25,10 @@ public class InitialConfigurationScreen extends Application {
     @Override //Override the start method in the Application class
     public void start(Stage primaryStage) {
 
-        startScreen(primaryStage);
+        introScreen(primaryStage);
 
         primaryStage.setResizable(false);
-        primaryStage.setScene(start);
+        primaryStage.setScene(intro);
         primaryStage.setTitle("Dungeon Crawler");
         primaryStage.show();
 
@@ -107,6 +108,35 @@ public class InitialConfigurationScreen extends Application {
 
             }
         });
+    }
+    private void introScreen(Stage stage){
+
+        //Create the intro Screen
+        VBox box = new VBox(75);
+        Text introText = new Text("Welcome to Dungeons and Debuggers! Press Start Game to continue");
+
+        Button introBtn = new Button("Start");
+
+        introBtn.setStyle("-fx-font-size:20");
+
+        introBtn.setMaxWidth(150);
+        box.getChildren().addAll(introText,introBtn);
+
+        intro = new Scene(box, 525, 525);
+        box.setAlignment(Pos.CENTER);
+
+        //Move to start screen
+        introBtn.setOnMouseClicked(e -> {
+            startScreen(stage);
+            stage.setScene(start);
+        });
+
+
+
+
+    }
+    private void gameScreen(Stage stage){
+
     }
 
 

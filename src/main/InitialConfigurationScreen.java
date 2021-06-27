@@ -13,6 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class InitialConfigurationScreen extends Application {
 
@@ -68,7 +75,7 @@ public class InitialConfigurationScreen extends Application {
 
         StackPane pane = new StackPane();
 
-        Button startbtn = new Button("Start!");
+        Button startbtn = new Button("Start");
 
         startbtn.setStyle("-fx-font-size:20");
 
@@ -112,19 +119,18 @@ public class InitialConfigurationScreen extends Application {
             }
         });
     }
-    private void introScreen(Stage primaryStage) {
+    private void introScreen(Stage primaryStage){
 
         //Create the intro Screen
         VBox box = new VBox(75);
-        Text introText = new Text(
-                "Welcome to Dungeons and Debuggers! Press Start Game to continue");
+        Text introText = new Text("Welcome to Dungeons and Debuggers! Press Start Game to continue");
 
         Button introBtn = new Button("Start");
 
         introBtn.setStyle("-fx-font-size:20");
 
         introBtn.setMaxWidth(150);
-        box.getChildren().addAll(introText, introBtn);
+        box.getChildren().addAll(introText,introBtn);
 
         intro = new Scene(box, 525, 525);
         box.setAlignment(Pos.CENTER);
@@ -135,6 +141,9 @@ public class InitialConfigurationScreen extends Application {
             primaryStage.setScene(start);
         });
 
+
+
+
     }
     private void gameScreen(Stage stage)  {
         //Main screen of the game
@@ -142,11 +151,12 @@ public class InitialConfigurationScreen extends Application {
         // Top UI for the game we can see for money
         HBox UI = new HBox();
         int moneyAmount = 0;
-        if (level == Difficulty.EASY) {
+        if(level == Difficulty.EASY){
             moneyAmount = 1000;
-        } else if ((level == Difficulty.MEDIUM)) {
+        } else if ((level == Difficulty.MEDIUM)){
             moneyAmount = 500;
         }
+
 
         Text money = new Text("Money:" + moneyAmount);
         money.setId("money");
@@ -156,12 +166,18 @@ public class InitialConfigurationScreen extends Application {
         StackPane playerScreen = new StackPane();
         playerScreen.setAlignment(Pos.CENTER);
 
-        Rectangle player = new Rectangle(50, 50);
+
+
+
+
+
+
+        Rectangle player = new Rectangle(50,50);
         playerScreen.getChildren().addAll(player);
 
         //Create Exit Left
         VBox left = new VBox();
-        Rectangle exit1 = new Rectangle(25, 100);
+        Rectangle exit1 = new Rectangle(25,100);
         exit1.setFill(Color.GREEN);
         exit1.setStroke(Color.GREEN);
 
@@ -170,7 +186,7 @@ public class InitialConfigurationScreen extends Application {
 
         //Create Exit Right
         VBox right = new VBox();
-        Rectangle exit2 = new Rectangle(25, 100);
+        Rectangle exit2 = new Rectangle(25,100);
         exit2.setFill(Color.GREEN);
         exit2.setStroke(Color.GREEN);
 
@@ -179,17 +195,20 @@ public class InitialConfigurationScreen extends Application {
 
         //Create Exit Bottom
         HBox bottom = new HBox();
-        Rectangle exit3 = new Rectangle(100, 25);
+        Rectangle exit3 = new Rectangle(100,25);
         exit3.setFill(Color.GREEN);
         exit3.setStroke(Color.GREEN);
 
-        Rectangle exit4 = new Rectangle(100, 25);
+        Rectangle exit4 = new Rectangle(100,25);
         exit4.setFill(Color.GREEN);
         exit4.setStroke(Color.GREEN);
 
         bottom.setSpacing(50);
-        bottom.getChildren().addAll(exit3, exit4);
+        bottom.getChildren().addAll(exit3,exit4);
         bottom.setAlignment(Pos.CENTER);
+
+
+
 
         screen.setTop(UI);
         screen.setCenter(playerScreen);
@@ -198,7 +217,7 @@ public class InitialConfigurationScreen extends Application {
         screen.setBottom(bottom);
 
         //Create scene
-        game = new Scene(screen, 525, 525);
+        game = new Scene(screen,525,525);
 
 
     }

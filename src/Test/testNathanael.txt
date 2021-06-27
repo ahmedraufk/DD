@@ -1,0 +1,8 @@
+Nathanael Balachandran's Tests:
+
+testEmptyName()
+This test checks to see if an error is given if no name is present when the player selects "Start." This test simply presses the start button at the beginning and then the second start button while all the name field is left blank. It then checks to see if an error screen is shown to verify that users cannot continue without entering information.
+
+testScreenNavigation()
+This test checks to see if all the screens are properly navigated in the game. It clicks the start button at the beginning, fills out all the information needed for the player, clicks start, and then checks to see if the game elements are present on screen to verify that all the screens are being properly navigated and shown.
+

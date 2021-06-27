@@ -159,6 +159,7 @@ public class InitialConfigurationScreen extends Application {
 
 
         Text money = new Text("Money:" + moneyAmount);
+        money.setId("money");
         UI.getChildren().addAll(money);
 
         //Player Creation

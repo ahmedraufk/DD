@@ -1,0 +1,7 @@
+Ahmed's Test
+
+selectDifficultyEasy()
+checks to see if picking difficulty of easy gives a money value of 1000
+
+selectDifficultyHard()
+checks to see if picking difficulty of hard gives a money value of 0

@@ -4,4 +4,4 @@ whiteSpaceTest()
 checks that there is whitespace present in a button's location when screens are changed
 
 selectWeapons()
-verifies that all 3 weapon options are avalible on the select weapon screen
+verifies that all 3 weapon options are available on the select weapon screen

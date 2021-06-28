@@ -1,4 +1,3 @@
-package Test;
 
 import javafx.stage.Stage;
 import main.InitialConfigurationScreen;

@@ -3,3 +3,7 @@
 Game.iml
 out
 .DS_Store
+
+checkstyle-*.jar
+cs2340_checks.xml
+run_checkstyle.py

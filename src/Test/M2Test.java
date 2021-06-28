@@ -1,4 +1,4 @@
-package Test;
+
 
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.TextMatchers.hasText;
@@ -11,18 +11,18 @@ import org.testfx.matcher.base.WindowMatchers;
 
 public class M2Test extends ApplicationTest {
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         InitialConfigurationScreen init = new InitialConfigurationScreen();
         init.start(primaryStage);
     }
     @Test
-    public void testEmptyName(){
+    public void testEmptyName() {
         clickOn("Start");
         clickOn("Start");
         verifyThat(window("Error Detected"), WindowMatchers.isShowing());
     }
     @Test
-    public void testScreenNavigation(){
+    public void testScreenNavigation() {
         clickOn("Start");
         clickOn("Select Difficulty");
         clickOn("EASY");

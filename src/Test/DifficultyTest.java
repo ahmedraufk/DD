@@ -15,16 +15,16 @@ public class DifficultyTest extends ApplicationTest {
         cScreen.start(primaryStage);
     }
     @Test
-    public void selectDifficultyEasy() {
+    public void selectDifficultyMedium() {
         clickOn("Start");
         clickOn("Select Difficulty");
-        clickOn("EASY");
+        clickOn("MEDIUM");
         clickOn("Select Weapon");
         clickOn("AXE");
         clickOn("Name:");
         type(KeyCode.A);
-        clickOn("Start!");
-        verifyThat("Money:1000",NodeMatchers.isNotNull());
+        clickOn("Start");
+        verifyThat("Money:500", NodeMatchers.isNotNull());
 
     }
 
@@ -37,8 +37,8 @@ public class DifficultyTest extends ApplicationTest {
         clickOn("AXE");
         clickOn("Name:");
         type(KeyCode.A);
-        clickOn("Start!");
-        verifyThat("Money:0",NodeMatchers.isNotNull());
+        clickOn("Start");
+        verifyThat("Money:0", NodeMatchers.isNotNull());
 
     }
 

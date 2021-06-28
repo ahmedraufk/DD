@@ -1,7 +1,9 @@
 Ahmed's Test
 
-selectDifficultyEasy()
-checks to see if picking difficulty of easy gives a money value of 1000
+selectDifficultyMedium()
+checks to see if picking difficulty of easy gives a money value of 500 by selecting medium as an option from the
+combo box
 
 selectDifficultyHard()
-checks to see if picking difficulty of hard gives a money value of 0
+checks to see if picking difficulty of hard gives a money value of 0 by selecting hard as an option from the combo
+box

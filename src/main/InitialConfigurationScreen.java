@@ -13,12 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
-
+import main.RoomController;
 
 
 
 public class InitialConfigurationScreen extends Application {
 
+    private static int moneyAmount;
     private Scene start;
     private Scene intro;
     private Scene game;
@@ -147,7 +148,7 @@ public class InitialConfigurationScreen extends Application {
         BorderPane screen = new BorderPane();
         // Top UI for the game we can see for money
         HBox uI = new HBox();
-        int moneyAmount = 0;
+        moneyAmount = 0;
         if (level == Difficulty.EASY) {
             moneyAmount = 1000;
         } else if ((level == Difficulty.MEDIUM)) {
@@ -162,11 +163,6 @@ public class InitialConfigurationScreen extends Application {
         //Player Creation
         StackPane playerScreen = new StackPane();
         playerScreen.setAlignment(Pos.CENTER);
-
-
-
-
-
 
 
         Rectangle player = new Rectangle(50, 50);
@@ -216,8 +212,17 @@ public class InitialConfigurationScreen extends Application {
         //Create scene
         game = new Scene(screen, 525, 525);
 
+        // Exit 1
+        exit1.setOnMouseClicked(e ->{
+
+            RoomController.path1(stage,game);
+                }
+                );
+
 
     }
 
-
+    public static int getMoneyAmount() {
+        return moneyAmount;
+    }
 }

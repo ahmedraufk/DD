@@ -219,7 +219,24 @@ public class InitialConfigurationScreen extends Application {
                 }
                 );
 
+        exit2.setOnMouseClicked(e ->{
 
+                    RoomController.path2(stage,game);
+                }
+        );
+
+        exit3.setOnMouseClicked(e ->{
+
+                    RoomController.path3(stage,game);
+                }
+        );
+
+        // Exit 4
+        exit4.setOnMouseClicked(e ->{
+
+                    RoomController.path4(stage,game);
+                }
+        );
     }
 
     public static int getMoneyAmount() {

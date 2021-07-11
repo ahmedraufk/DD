@@ -28,7 +28,7 @@ public class Room {
      * @param Door2 next door to enter from
      * @param stage pass in the stage
      */
-    public Room(Scene prevExit, Scene nextExit, RoomController.doorSelect Door1, RoomController.doorSelect Door2, Stage stage){
+    public Room(Scene prevExit, Scene nextExit, RoomController.doorSelect Door1, RoomController.doorSelect Door2, Stage stage,boolean isExit){
         BorderPane screen = new BorderPane();
         door2p = Door2;
 
@@ -40,7 +40,7 @@ public class Room {
         Rectangle player = new Rectangle(50, 50);
         playerScreen.getChildren().addAll(player);
 
-        HBox uI = new HBox();
+        HBox uI = new HBox(145);
         int moneyAmount = InitialConfigurationScreen.getMoneyAmount();
 
 
@@ -55,6 +55,7 @@ public class Room {
         VBox left = new VBox();
 
         exit1 = new Rectangle(25, 100);
+        exit1.setId("exit1");
         //Checks which door to select
         if(Door1 == RoomController.doorSelect.LEFT || Door2 == RoomController.doorSelect.LEFT){
             exit1.setFill(Color.GREEN);
@@ -71,6 +72,7 @@ public class Room {
         //Create Exit Right
         VBox right = new VBox();
         exit2 = new Rectangle(25, 100);
+        exit2.setId("exit2");
         if(Door1 == RoomController.doorSelect.RIGHT || Door2 == RoomController.doorSelect.RIGHT){
             exit2.setFill(Color.GREEN);
             exit2.setStroke(Color.GREEN);
@@ -85,9 +87,15 @@ public class Room {
         //Create Exit Bottom
         HBox bottom = new HBox();
         exit3 = new Rectangle(100, 25);
+        exit3.setId("exit3");
         if(Door1 == RoomController.doorSelect.BOTTOM || Door2 == RoomController.doorSelect.BOTTOM){
-            exit3.setFill(Color.GREEN);
-            exit3.setStroke(Color.GREEN);
+            if(!isExit){
+                exit3.setFill(Color.GREEN);
+                exit3.setStroke(Color.GREEN);
+            } else {
+                exit3.setFill(Color.RED);
+                exit3.setStroke(Color.RED);
+            }
         } else {
             exit3.setFill(Color.rgb(0, 0, 0, 0));
             exit3.setStroke(Color.rgb(0, 0, 0, 0));
@@ -96,6 +104,7 @@ public class Room {
         //Create Exit top
         HBox top = new HBox();
         exit4 = new Rectangle(100, 25);
+        exit4.setId("exit4");
         if(Door1 == RoomController.doorSelect.TOP || Door2 == RoomController.doorSelect.TOP){
             exit4.setFill(Color.GREEN);
             exit4.setStroke(Color.GREEN);
@@ -104,8 +113,9 @@ public class Room {
             exit4.setStroke(Color.rgb(0, 0, 0, 0));
         }
 
-        top.getChildren().addAll(exit4);
-        top.setAlignment(Pos.CENTER);
+
+        uI.getChildren().addAll(exit4);
+        //top.setAlignment(Pos.CENTER);
 
 
         //Set white color to doors we aren't using
@@ -122,7 +132,7 @@ public class Room {
         screen.setBottom(bottom);
         screen.setRight(right);
         screen.setLeft(left);
-        screen.setTop(top);
+        //screen.setTop(top);
         screen.setCenter(playerScreen);
 
         if(Door1 == RoomController.doorSelect.LEFT){

@@ -173,6 +173,7 @@ public class InitialConfigurationScreen extends Application {
         Rectangle exit1 = new Rectangle(100, 25);
         exit1.setFill(Color.GREEN);
         exit1.setStroke(Color.GREEN);
+        exit1.setId("exit1");
 
         //left.getChildren().addAll(exit1);
         //left.setAlignment(Pos.CENTER);
@@ -182,6 +183,7 @@ public class InitialConfigurationScreen extends Application {
         Rectangle exit2 = new Rectangle(100, 25);
         exit2.setFill(Color.GREEN);
         exit2.setStroke(Color.GREEN);
+        exit2.setId("exit2");
 
         //right.getChildren().addAll(exit2);
         //right.setAlignment(Pos.CENTER);
@@ -191,10 +193,12 @@ public class InitialConfigurationScreen extends Application {
         Rectangle exit3 = new Rectangle(100, 25);
         exit3.setFill(Color.GREEN);
         exit3.setStroke(Color.GREEN);
+        exit3.setId("exit3");
 
         Rectangle exit4 = new Rectangle(100, 25);
         exit4.setFill(Color.GREEN);
         exit4.setStroke(Color.GREEN);
+        exit4.setId("exit4");
 
         bottom.setSpacing(30);
         bottom.getChildren().addAll(exit1, exit2, exit3, exit4);

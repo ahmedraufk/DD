@@ -1,0 +1,7 @@
+Anjoulie's Tests
+
+checkGoBackOneRoom()
+checks to see if clicking on exit1 twice takes you back to the first room
+
+checkBackandForthRoom()
+checks to see if clicking on exit2, exit3, and exit4 twice respectively leads you back to the first room

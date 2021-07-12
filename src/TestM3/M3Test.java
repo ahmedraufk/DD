@@ -1,15 +1,15 @@
 
 
 import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.matcher.control.TextMatchers.hasText;
+
 
 import javafx.scene.Node;
-import javafx.scene.shape.Rectangle;
+
 import javafx.stage.Stage;
 import main.InitialConfigurationScreen;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.matcher.base.WindowMatchers;
+
 
 public class M3Test extends ApplicationTest {
     @Override
@@ -28,7 +28,7 @@ public class M3Test extends ApplicationTest {
         write("Name");
         clickOn("Start");
         int i = 0;
-        while(i < 6) {
+        while (i < 6) {
             clickOn("#exit1");
             clickOn("#exit2");
             clickOn("#exit3");
@@ -47,7 +47,7 @@ public class M3Test extends ApplicationTest {
         write("Name");
         clickOn("Start");
         clickOn("#exit1");
-        verifyThat("#exit1",Node::isVisible);
+        verifyThat("#exit1", Node::isVisible);
         clickOn("#exit4");
         clickOn("#exit1");
 

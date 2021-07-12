@@ -28,7 +28,7 @@ public class AhmedTest extends ApplicationTest {
 
     }
     @Test
-    public void checkRoomSelection2(){
+    public void checkRoomSelection2() {
         clickOn("Start");
         clickOn("Select Difficulty");
         clickOn("MEDIUM");

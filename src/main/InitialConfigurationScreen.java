@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
-import main.RoomController;
+
 
 
 
@@ -141,7 +141,6 @@ public class InitialConfigurationScreen extends Application {
 
 
 
-
     }
     private void gameScreen(Stage stage)  {
         //Main screen of the game
@@ -154,8 +153,6 @@ public class InitialConfigurationScreen extends Application {
         } else if ((level == Difficulty.MEDIUM)) {
             moneyAmount = 500;
         }
-
-
         Text money = new Text("Money:" + moneyAmount);
         money.setId("money");
         uI.getChildren().addAll(money);
@@ -163,8 +160,6 @@ public class InitialConfigurationScreen extends Application {
         //Player Creation
         StackPane playerScreen = new StackPane();
         playerScreen.setAlignment(Pos.CENTER);
-
-
         Rectangle player = new Rectangle(50, 50);
         playerScreen.getChildren().addAll(player);
 
@@ -175,20 +170,12 @@ public class InitialConfigurationScreen extends Application {
         exit1.setStroke(Color.GREEN);
         exit1.setId("exit1");
 
-        //left.getChildren().addAll(exit1);
-        //left.setAlignment(Pos.CENTER);
 
-        //Create Exit Right
-        //VBox right = new VBox();
         Rectangle exit2 = new Rectangle(100, 25);
         exit2.setFill(Color.GREEN);
         exit2.setStroke(Color.GREEN);
         exit2.setId("exit2");
 
-        //right.getChildren().addAll(exit2);
-        //right.setAlignment(Pos.CENTER);
-
-        //Create Exit Bottom
         HBox bottom = new HBox();
         Rectangle exit3 = new Rectangle(100, 25);
         exit3.setFill(Color.GREEN);
@@ -205,119 +192,92 @@ public class InitialConfigurationScreen extends Application {
         bottom.setAlignment(Pos.CENTER);
 
 
-
-
         screen.setTop(uI);
         screen.setCenter(playerScreen);
-        //screen.setLeft(left);
-        //screen.setRight(right);
         screen.setBottom(bottom);
 
-        //Create scene
         game = new Scene(screen, 525, 525);
 
         int rand = (int) ((Math.random() * 4) + 1);
         // Exit 1
-        if(rand == 1){
-            exit1.setOnMouseClicked(e ->{
-
-                        RoomController.path1(stage,game);
-                    }
+        if (rand == 1) {
+            exit1.setOnMouseClicked(e -> {
+                RoomController.path1(stage, game);
+            }
             );
 
-            exit2.setOnMouseClicked(e ->{
+            exit2.setOnMouseClicked(e -> {
 
-                        RoomController.path2(stage,game);
-                    }
+                RoomController.path2(stage, game);
+            }
             );
 
-            exit3.setOnMouseClicked(e ->{
-
-                        RoomController.path3(stage,game);
-                    }
+            exit3.setOnMouseClicked(e -> {
+                RoomController.path3(stage, game);
+            }
             );
-
             // Exit 4
-            exit4.setOnMouseClicked(e ->{
-
-                        RoomController.path4(stage,game);
-                    }
+            exit4.setOnMouseClicked(e -> {
+                RoomController.path4(stage, game);
+            }
             );
         }
-        else if(rand == 2){
-            exit1.setOnMouseClicked(e ->{
-
-                        RoomController.path2(stage,game);
+        else if (rand == 2) {
+            exit1.setOnMouseClicked(e -> {
+                RoomController.path2(stage, game);
+            }
+            );
+            exit2.setOnMouseClicked(e -> {
+                RoomController.path3(stage, game);
                     }
             );
-
-            exit2.setOnMouseClicked(e ->{
-
-                        RoomController.path3(stage,game);
+            exit3.setOnMouseClicked(e -> {
+                RoomController.path4(stage, game);
                     }
             );
-
-            exit3.setOnMouseClicked(e ->{
-
-                        RoomController.path4(stage,game);
-                    }
-            );
-
             // Exit 4
-            exit4.setOnMouseClicked(e ->{
-
-                        RoomController.path1(stage,game);
+            exit4.setOnMouseClicked(e -> {
+                RoomController.path1(stage, game);
                     }
             );
         }
         else if(rand == 3){
-            exit1.setOnMouseClicked(e ->{
-
-                        RoomController.path3(stage,game);
+            exit1.setOnMouseClicked(e -> {
+                RoomController.path3(stage, game);
                     }
             );
-
-            exit2.setOnMouseClicked(e ->{
-
-                        RoomController.path4(stage,game);
-                    }
+            exit2.setOnMouseClicked(e -> {
+                RoomController.path4(stage, game);
+            }
             );
-
-            exit3.setOnMouseClicked(e ->{
-
-                        RoomController.path1(stage,game);
-                    }
+            exit3.setOnMouseClicked(e -> {
+                RoomController.path1(stage, game);
+            }
             );
-
             // Exit 4
-            exit4.setOnMouseClicked(e ->{
-
-                        RoomController.path2(stage,game);
-                    }
+            exit4.setOnMouseClicked(e -> {
+                RoomController.path2(stage, game);
+            }
             );
         }
         else if(rand == 4){
             exit1.setOnMouseClicked(e ->{
-
-                        RoomController.path4(stage,game);
-                    }
+                RoomController.path4(stage,game);
+            }
             );
 
             exit2.setOnMouseClicked(e ->{
-
                         RoomController.path1(stage,game);
                     }
             );
 
             exit3.setOnMouseClicked(e ->{
-
                         RoomController.path2(stage,game);
                     }
             );
 
             // Exit 4
             exit4.setOnMouseClicked(e ->{
-
                         RoomController.path3(stage,game);
                     }
             );

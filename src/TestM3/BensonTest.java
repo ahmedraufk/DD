@@ -28,7 +28,7 @@ public class BensonTest extends ApplicationTest {
 
     }
     @Test
-    public void checkRoomSelection4(){
+    public void checkRoomSelection4() {
         clickOn("Start");
         clickOn("Select Difficulty");
         clickOn("EASY");

@@ -1,0 +1,5 @@
+checkRoomSelection3()
+checks to see if clicking on exit3 leads to the next room
+
+checkRoomSelection4()()
+checks to see if clicking on exit4 leads to the next room

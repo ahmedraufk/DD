@@ -6,7 +6,7 @@ import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
 import static org.testfx.api.FxAssert.verifyThat;
 
-public class AnjoulieTest extends ApplicationTest {
+public class BensonTest extends ApplicationTest {
     @Override
     public void start(Stage primaryStage) throws Exception {
         InitialConfigurationScreen cScreen = new InitialConfigurationScreen();
@@ -14,37 +14,31 @@ public class AnjoulieTest extends ApplicationTest {
     }
 
     @Test
-    public void checkGoBackOneRoom() {
+    public void checkRoomSelection3() {
         clickOn("Start");
         clickOn("Select Difficulty");
-        clickOn("MEDIUM");
+        clickOn("EASY");
         clickOn("Select Weapon");
         clickOn("SWORD");
         clickOn("Name:");
         type(KeyCode.A);
         clickOn("Start");
-        clickOn("#exit1");
-        clickOn("#exit4");
-        verifyThat("#exit1", NodeMatchers.isNotNull());
+        clickOn("#exit3");
+        verifyThat("#exit4", NodeMatchers.isNotNull());
 
     }
-
     @Test
-    public void checkBackandForthRoom() {
+    public void checkRoomSelection4(){
         clickOn("Start");
         clickOn("Select Difficulty");
-        clickOn("MEDIUM");
+        clickOn("EASY");
         clickOn("Select Weapon");
         clickOn("SWORD");
         clickOn("Name:");
         type(KeyCode.A);
         clickOn("Start");
-        clickOn("#exit2");
-        clickOn("#exit4");
-        clickOn("#exit3");
-        clickOn("#exit4");
-        clickOn("#exit4");
         clickOn("#exit4");
         verifyThat("#exit4", NodeMatchers.isNotNull());
+
     }
 }

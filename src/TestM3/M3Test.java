@@ -1,4 +1,4 @@
-package Test;
+
 
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.TextMatchers.hasText;
@@ -37,7 +37,7 @@ public class M3Test extends ApplicationTest {
         }
     }
     @Test
-    public void testReverseTraversal() {
+    public void testSamePath() {
         clickOn("Start");
         clickOn("Select Difficulty");
         clickOn("EASY");
@@ -47,7 +47,9 @@ public class M3Test extends ApplicationTest {
         write("Name");
         clickOn("Start");
         clickOn("#exit1");
-        clickOn(650, 100);
-        verifyThat("#exit1", Node::isVisible);
+        verifyThat("#exit1",Node::isVisible);
+        clickOn("#exit4");
+        clickOn("#exit1");
+
     }
 }

@@ -3,5 +3,5 @@ Nathanael Balachandran Tests:
 testSixTraversal()
 This test checks to see if at least six screens are traversed before reaching the exit. The test simply clicks all the available exits on the screen and sees if a screen is traversed. It iterates six times and this shows that no matter what, six rooms will be traversed before reaching the exit.
 
-testReverseTraversal()
-This test checks to see if a player can move backwards after going through the room. The test clicks the first exit on the starting screen, clicks the previous door to return to the starting screen, and then checks if the player has arrived to the starting screen with all four exits.
+testSamePath()
+This test checks to see if the program generated the same path for each exit despite the randomization

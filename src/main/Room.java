@@ -1,6 +1,6 @@
 package main;
 
-import com.sun.webkit.dom.StyleSheetListImpl;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -18,19 +18,21 @@ public class Room {
     private Rectangle exit2 = new Rectangle(25, 100);
     private Rectangle exit3 = new Rectangle(100, 25);
     private Rectangle exit4 = new Rectangle(100, 25);
-    private RoomController.doorSelect door2p;
+    private RoomController.SelectDoor door2p;
 
     /**
      * Creates the Room class
      * @param prevExit previous scene to enter
      * @param nextExit next scene to enter
-     * @param Door1 previous door to enter from
-     * @param Door2 next door to enter from
+     * @param door1 previous door to enter from
+     * @param door2 next door to enter from
      * @param stage pass in the stage
+     * @param isExit is this room an exit
      */
-    public Room(Scene prevExit, Scene nextExit, RoomController.doorSelect Door1, RoomController.doorSelect Door2, Stage stage,boolean isExit){
+    public Room(Scene prevExit, Scene nextExit, RoomController.SelectDoor door1,
+                RoomController.SelectDoor door2, Stage stage, boolean isExit) {
         BorderPane screen = new BorderPane();
-        door2p = Door2;
+        door2p = door2;
 
         //Player Creation
         StackPane playerScreen = new StackPane();
@@ -57,7 +59,7 @@ public class Room {
         exit1 = new Rectangle(25, 100);
         exit1.setId("exit1");
         //Checks which door to select
-        if(Door1 == RoomController.doorSelect.LEFT || Door2 == RoomController.doorSelect.LEFT){
+        if (door1 == RoomController.SelectDoor.LEFT || door2 == RoomController.SelectDoor.LEFT) {
             exit1.setFill(Color.GREEN);
             exit1.setStroke(Color.GREEN);
         } else {
@@ -73,7 +75,7 @@ public class Room {
         VBox right = new VBox();
         exit2 = new Rectangle(25, 100);
         exit2.setId("exit2");
-        if(Door1 == RoomController.doorSelect.RIGHT || Door2 == RoomController.doorSelect.RIGHT){
+        if (door1 == RoomController.SelectDoor.RIGHT || door2 == RoomController.SelectDoor.RIGHT) {
             exit2.setFill(Color.GREEN);
             exit2.setStroke(Color.GREEN);
         } else {
@@ -88,8 +90,9 @@ public class Room {
         HBox bottom = new HBox();
         exit3 = new Rectangle(100, 25);
         exit3.setId("exit3");
-        if(Door1 == RoomController.doorSelect.BOTTOM || Door2 == RoomController.doorSelect.BOTTOM){
-            if(!isExit){
+        if (door1 == RoomController.SelectDoor.BOTTOM
+                || door2 == RoomController.SelectDoor.BOTTOM) {
+            if (!isExit) {
                 exit3.setFill(Color.GREEN);
                 exit3.setStroke(Color.GREEN);
             } else {
@@ -105,7 +108,7 @@ public class Room {
         HBox top = new HBox();
         exit4 = new Rectangle(100, 25);
         exit4.setId("exit4");
-        if(Door1 == RoomController.doorSelect.TOP || Door2 == RoomController.doorSelect.TOP){
+        if (door1 == RoomController.SelectDoor.TOP || door2 == RoomController.SelectDoor.TOP) {
             exit4.setFill(Color.GREEN);
             exit4.setStroke(Color.GREEN);
         } else {
@@ -135,37 +138,37 @@ public class Room {
         //screen.setTop(top);
         screen.setCenter(playerScreen);
 
-        if(Door1 == RoomController.doorSelect.LEFT){
-            exit1.setOnMouseClicked(e->{
+        if (door1 == RoomController.SelectDoor.LEFT) {
+            exit1.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
-        } else if (Door1 == RoomController.doorSelect.RIGHT){
-            exit2.setOnMouseClicked(e->{
+        } else if (door1 == RoomController.SelectDoor.RIGHT) {
+            exit2.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
-        } else if (Door1 == RoomController.doorSelect.BOTTOM){
-            exit3.setOnMouseClicked(e->{
+        } else if (door1 == RoomController.SelectDoor.BOTTOM) {
+            exit3.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
-        } else if (Door1 == RoomController.doorSelect.TOP){
-            exit4.setOnMouseClicked(e->{
+        } else if (door1 == RoomController.SelectDoor.TOP) {
+            exit4.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
         }
 
-        if(Door2 == RoomController.doorSelect.LEFT){
-            exit1.setOnMouseClicked(e->{
+        if (door2 == RoomController.SelectDoor.LEFT) {
+            exit1.setOnMouseClicked(e -> {
                 stage.setScene(nextExit);
             });
-        } else if (Door2 == RoomController.doorSelect.RIGHT){
-            exit2.setOnMouseClicked(e->{
+        } else if (door2 == RoomController.SelectDoor.RIGHT) {
+            exit2.setOnMouseClicked(e -> {
                 stage.setScene(nextExit);
             });
-        } else if (Door2 == RoomController.doorSelect.BOTTOM){
-            exit3.setOnMouseClicked(e->{
+        } else if (door2 == RoomController.SelectDoor.BOTTOM) {
+            exit3.setOnMouseClicked(e -> {
                 stage.setScene(nextExit);
             });
-        } else if (Door2 == RoomController.doorSelect.TOP) {
+        } else if (door2 == RoomController.SelectDoor.TOP) {
             exit4.setOnMouseClicked(e -> {
                 stage.setScene(nextExit);
             });
@@ -175,23 +178,23 @@ public class Room {
 
         roomScene = new Scene(screen, 525, 525);
     }
-    public Scene getRoomScene(){
+    public Scene getRoomScene() {
         return roomScene;
     }
-    public void setNextExit(Scene exit,Stage stage){
-        if(door2p == RoomController.doorSelect.LEFT){
-            exit1.setOnMouseClicked(e->{
+    public void setNextExit(Scene exit, Stage stage) {
+        if (door2p == RoomController.SelectDoor.LEFT) {
+            exit1.setOnMouseClicked(e -> {
                 stage.setScene(exit);
             });
-        } else if (door2p == RoomController.doorSelect.RIGHT){
-            exit2.setOnMouseClicked(e->{
+        } else if (door2p == RoomController.SelectDoor.RIGHT) {
+            exit2.setOnMouseClicked(e -> {
                 stage.setScene(exit);
             });
-        } else if (door2p == RoomController.doorSelect.BOTTOM){
-            exit3.setOnMouseClicked(e->{
+        } else if (door2p == RoomController.SelectDoor.BOTTOM) {
+            exit3.setOnMouseClicked(e -> {
                 stage.setScene(exit);
             });
-        } else if (door2p == RoomController.doorSelect.TOP) {
+        } else if (door2p == RoomController.SelectDoor.TOP) {
             exit4.setOnMouseClicked(e -> {
                 stage.setScene(exit);
             });

@@ -221,30 +221,28 @@ public class InitialConfigurationScreen extends Application {
                 RoomController.path4(stage, game);
             }
             );
-        }
-        else if (rand == 2) {
+        } else if (rand == 2) {
             exit1.setOnMouseClicked(e -> {
                 RoomController.path2(stage, game);
             }
             );
             exit2.setOnMouseClicked(e -> {
                 RoomController.path3(stage, game);
-                    }
+            }
             );
             exit3.setOnMouseClicked(e -> {
                 RoomController.path4(stage, game);
-                    }
+            }
             );
             // Exit 4
             exit4.setOnMouseClicked(e -> {
                 RoomController.path1(stage, game);
-                    }
+            }
             );
-        }
-        else if(rand == 3){
+        } else if (rand == 3) {
             exit1.setOnMouseClicked(e -> {
                 RoomController.path3(stage, game);
-                    }
+            }
             );
             exit2.setOnMouseClicked(e -> {
                 RoomController.path4(stage, game);
@@ -259,27 +257,26 @@ public class InitialConfigurationScreen extends Application {
                 RoomController.path2(stage, game);
             }
             );
-        }
-        else if(rand == 4){
-            exit1.setOnMouseClicked(e ->{
-                RoomController.path4(stage,game);
+        } else if (rand == 4) {
+            exit1.setOnMouseClicked(e -> {
+                RoomController.path4(stage, game);
             }
             );
 
-            exit2.setOnMouseClicked(e ->{
-                        RoomController.path1(stage,game);
-                    }
+            exit2.setOnMouseClicked(e -> {
+                RoomController.path1(stage, game);
+            }
             );
 
-            exit3.setOnMouseClicked(e ->{
-                        RoomController.path2(stage,game);
-                    }
+            exit3.setOnMouseClicked(e -> {
+                RoomController.path2(stage, game);
+            }
             );
 
             // Exit 4
-            exit4.setOnMouseClicked(e ->{
-                        RoomController.path3(stage,game);
-                    }
+            exit4.setOnMouseClicked(e -> {
+                RoomController.path3(stage, game);
+            }
             );
         }
     }

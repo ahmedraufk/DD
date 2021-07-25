@@ -79,6 +79,7 @@ public class Monster extends Player {
                     this.attackPlayer(mainPlayer);
                 } else {
                     monster.setFill(Color.WHITE);
+                    mainPlayer.setDefeated();
                 }
                 if(mainPlayer.getPlayerHealth() == 0){
                     this.deathScene();
@@ -112,6 +113,7 @@ public class Monster extends Player {
                     this.attackPlayer(mainPlayer);
                 } else {
                     monster.setFill(Color.WHITE);
+                    mainPlayer.setDefeated();
                 }
 
                 if(mainPlayer.getPlayerHealth() == 0){
@@ -147,6 +149,7 @@ public class Monster extends Player {
                     this.attackPlayer(mainPlayer);
                 } else {
                     triangle.setFill(Color.WHITE);
+                    mainPlayer.setDefeated();
                 }
                 if(mainPlayer.getPlayerHealth() == 0){
                     this.deathScene();

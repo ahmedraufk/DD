@@ -1,21 +1,24 @@
 package main;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 public class RoomController {
 
-    public static void path1(Stage stage, Scene startRoom) {
+    public static void path1(Stage stage, Scene startRoom,Player mainPlayer) {
+        mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
+        mainPlayer.getHealthLbl().setTextFill(Color.WHITE);
 
         //Room Class Creation
-        Room room1 = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, false);
+        Room room1 = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         //Create scene
         Scene room1Scene = room1.getRoomScene();
 
         //Get the scene from the class
-        Room room2 = new Room(room1Scene, null, SelectDoor.TOP, null, stage, false);
+        Room room2 = new Room(room1Scene, null, SelectDoor.TOP, null, stage, false,mainPlayer);
 
         Scene room2Scene = room2.getRoomScene();
 
@@ -26,23 +29,25 @@ public class RoomController {
 
     };
     
-    public static void path2(Stage stage, Scene startRoom) {
+    public static void path2(Stage stage, Scene startRoom,Player mainPlayer) {
+        mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
+        mainPlayer.getHealthLbl().setTextFill(Color.WHITE);
 
-        Room firstRoom = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.RIGHT, stage, false);
+        Room firstRoom = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.RIGHT, stage, false,mainPlayer);
 
         Scene firstRoomScene = firstRoom.getRoomScene();
 
         Room secondRoom = new Room(firstRoomScene, null,
-                SelectDoor.LEFT, SelectDoor.TOP, stage, false);
+                SelectDoor.LEFT, SelectDoor.TOP, stage, false,mainPlayer);
 
         Scene secondRoomScene = secondRoom.getRoomScene();
 
         Room thirdRoom = new Room(secondRoomScene, null,
-                SelectDoor.BOTTOM, SelectDoor.TOP, stage, false);
+                SelectDoor.BOTTOM, SelectDoor.TOP, stage, false,mainPlayer);
 
         Scene thirdRoomScene = thirdRoom.getRoomScene();
 
-        Room fourthRoom = new Room(thirdRoomScene, null, SelectDoor.BOTTOM, null, stage, false);
+        Room fourthRoom = new Room(thirdRoomScene, null, SelectDoor.BOTTOM, null, stage, false,mainPlayer);
 
         Scene fourthRoomScene = fourthRoom.getRoomScene();
 
@@ -56,43 +61,45 @@ public class RoomController {
 
     }
 
-    public static void path3(Stage stage, Scene startRoom) {
-        Room firstRoom = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, false);
+    public static void path3(Stage stage, Scene startRoom,Player mainPlayer) {
+        mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
+        mainPlayer.getHealthLbl().setTextFill(Color.WHITE);
+        Room firstRoom = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         Scene firstRoomScene = firstRoom.getRoomScene();
 
         Room secondRoom = new Room(firstRoomScene, null,
-                SelectDoor.TOP, SelectDoor.BOTTOM, stage, false);
+                SelectDoor.TOP, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         Scene secondRoomScene = secondRoom.getRoomScene();
 
         Room thirdRoom = new Room(secondRoomScene, null,
-                SelectDoor.TOP, SelectDoor.RIGHT, stage, false);
+                SelectDoor.TOP, SelectDoor.RIGHT, stage, false,mainPlayer);
 
         Scene thirdRoomScene = thirdRoom.getRoomScene();
 
         Room fourthRoom = new Room(thirdRoomScene, null,
-                SelectDoor.LEFT, SelectDoor.RIGHT, stage, false);
+                SelectDoor.LEFT, SelectDoor.RIGHT, stage, false,mainPlayer);
 
         Scene fourthRoomScene = fourthRoom.getRoomScene();
 
         Room fifthRoom = new Room(fourthRoomScene, null,
-                SelectDoor.LEFT, SelectDoor.BOTTOM, stage, false);
+                SelectDoor.LEFT, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         Scene fifthRoomScene = fifthRoom.getRoomScene();
 
         Room sixthRoom = new Room(fifthRoomScene, null,
-                SelectDoor.TOP, SelectDoor.LEFT, stage, false);
+                SelectDoor.TOP, SelectDoor.LEFT, stage, false,mainPlayer);
 
         Scene sixthRoomScene = sixthRoom.getRoomScene();
 
         Room seventhRoom = new Room(fifthRoomScene, null,
-                SelectDoor.RIGHT, SelectDoor.BOTTOM, stage, false);
+                SelectDoor.RIGHT, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         Scene seventhRoomScene = seventhRoom.getRoomScene();
 
         Room eighthRoom = new Room(seventhRoomScene,
-                null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, true);
+                null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, true,mainPlayer);
 
         Scene eighthRoomScene = eighthRoom.getRoomScene();
 
@@ -127,22 +134,24 @@ public class RoomController {
         stage.setScene(firstRoomScene);
     }
 
-    public static void path4(Stage stage, Scene startRoom) {
-        Room firstRoom = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, false);
+    public static void path4(Stage stage, Scene startRoom,Player mainPlayer) {
+        mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
+        mainPlayer.getHealthLbl().setTextFill(Color.WHITE);
+        Room firstRoom = new Room(startRoom, null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         Scene firstRoomScene = firstRoom.getRoomScene();
 
         Room secondRoom = new Room(firstRoomScene,
-                null, SelectDoor.TOP, SelectDoor.RIGHT, stage, false);
+                null, SelectDoor.TOP, SelectDoor.RIGHT, stage, false,mainPlayer);
 
         Scene secondRoomScene = secondRoom.getRoomScene();
 
         Room thirdRoom = new Room(secondRoomScene,
-                null, SelectDoor.LEFT, SelectDoor.BOTTOM, stage, false);
+                null, SelectDoor.LEFT, SelectDoor.BOTTOM, stage, false,mainPlayer);
 
         Scene thirdRoomScene = thirdRoom.getRoomScene();
 
-        Room fourthRoom = new Room(thirdRoomScene, null, SelectDoor.TOP, null, stage, false);
+        Room fourthRoom = new Room(thirdRoomScene, null, SelectDoor.TOP, null, stage, false,mainPlayer);
 
         Scene fourthRoomScene = fourthRoom.getRoomScene();
 

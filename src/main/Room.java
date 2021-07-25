@@ -328,15 +328,15 @@ public class Room {
 
         } else if (door2p == RoomController.SelectDoor.TOP) {
             uI.getChildren().remove(exit4);
-            uI.getChildren().addAll(money);
             exit4Closed.setOnMouseClicked(e -> {
                 if (monster1.getHealth() == 0 && monster2.getHealth() == 0) {
                     uI.getChildren().addAll(exit4);
+                    uI.getChildren().remove(exit4Closed);
 
                 }
             });
-            bottom.getChildren().addAll(exit4Closed);
-            bottom.setAlignment(Pos.CENTER);
+            uI.getChildren().addAll(exit4Closed);
+
 
         }
         screen.setLeft(left);

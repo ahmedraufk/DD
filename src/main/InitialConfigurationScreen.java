@@ -14,21 +14,28 @@ import javafx.scene.control.Alert;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
-
+import java.util.Timer;
 
 
 public class InitialConfigurationScreen extends Application {
 
     private static int moneyAmount;
+    private static Stage primaryStage;
+    private static Scene intro;
     private Scene start;
-    private Scene intro;
     private Scene game;
     protected String name;
     protected Difficulty level;
     protected Weapon weaponType;
+    private static Player mainPlayer = new Player(100,5);
+    private static Timer timer = new Timer();
+
+
 
     @Override //Override the start method in the Application class
     public void start(Stage primaryStage) {
+        mainPlayer.setPlayerHealth(100);
+        this.primaryStage = primaryStage;
 
         introScreen(primaryStage);
 
@@ -143,10 +150,12 @@ public class InitialConfigurationScreen extends Application {
 
     }
     private void gameScreen(Stage stage)  {
+        //Player Creation
+
         //Main screen of the game
         BorderPane screen = new BorderPane();
         // Top UI for the game we can see for money
-        HBox uI = new HBox();
+        HBox uI = new HBox(20);
         moneyAmount = 0;
         if (level == Difficulty.EASY) {
             moneyAmount = 1000;
@@ -155,13 +164,27 @@ public class InitialConfigurationScreen extends Application {
         }
         Text money = new Text("Money:" + moneyAmount);
         money.setId("money");
+
+
+        mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
+        mainPlayer.getHealthLbl().setTextFill(Color.WHITE);
+
+        UpdateTimer updateTime = new UpdateTimer(this.mainPlayer);
+        timer.schedule(updateTime,1,500);
+
+
         uI.getChildren().addAll(money);
 
         //Player Creation
+
+        BorderPane battleScreen = new BorderPane();
         StackPane playerScreen = new StackPane();
         playerScreen.setAlignment(Pos.CENTER);
+
         Rectangle player = new Rectangle(50, 50);
-        playerScreen.getChildren().addAll(player);
+
+        playerScreen.getChildren().addAll(player,mainPlayer.getHealthLbl());
+        battleScreen.setCenter(playerScreen);
 
         //Create Exit Left
         //VBox left = new VBox();
@@ -193,95 +216,114 @@ public class InitialConfigurationScreen extends Application {
 
 
         screen.setTop(uI);
-        screen.setCenter(playerScreen);
+        screen.setCenter(battleScreen);
         screen.setBottom(bottom);
 
         game = new Scene(screen, 525, 525);
+
 
         int rand = (int) ((Math.random() * 4) + 1);
         // Exit 1
         if (rand == 1) {
             exit1.setOnMouseClicked(e -> {
-                RoomController.path1(stage, game);
+                RoomController.path1(stage, game,mainPlayer);
             }
             );
 
             exit2.setOnMouseClicked(e -> {
 
-                RoomController.path2(stage, game);
+                RoomController.path2(stage, game,mainPlayer);
             }
             );
 
             exit3.setOnMouseClicked(e -> {
-                RoomController.path3(stage, game);
+                RoomController.path3(stage, game,mainPlayer);
             }
             );
             // Exit 4
             exit4.setOnMouseClicked(e -> {
-                RoomController.path4(stage, game);
+                RoomController.path4(stage, game,mainPlayer);
             }
             );
         } else if (rand == 2) {
             exit1.setOnMouseClicked(e -> {
-                RoomController.path2(stage, game);
+                RoomController.path2(stage, game,mainPlayer);
             }
             );
             exit2.setOnMouseClicked(e -> {
-                RoomController.path3(stage, game);
+                RoomController.path3(stage, game,mainPlayer);
             }
             );
             exit3.setOnMouseClicked(e -> {
-                RoomController.path4(stage, game);
+                RoomController.path4(stage, game,mainPlayer);
             }
             );
             // Exit 4
             exit4.setOnMouseClicked(e -> {
-                RoomController.path1(stage, game);
+                RoomController.path1(stage, game,mainPlayer);
             }
             );
         } else if (rand == 3) {
             exit1.setOnMouseClicked(e -> {
-                RoomController.path3(stage, game);
+                RoomController.path3(stage, game,mainPlayer);
             }
             );
             exit2.setOnMouseClicked(e -> {
-                RoomController.path4(stage, game);
+                RoomController.path4(stage, game,mainPlayer);
             }
             );
             exit3.setOnMouseClicked(e -> {
-                RoomController.path1(stage, game);
+                RoomController.path1(stage, game,mainPlayer);
             }
             );
             // Exit 4
             exit4.setOnMouseClicked(e -> {
-                RoomController.path2(stage, game);
+                RoomController.path2(stage, game,mainPlayer);
             }
             );
         } else if (rand == 4) {
             exit1.setOnMouseClicked(e -> {
-                RoomController.path4(stage, game);
+                RoomController.path4(stage, game,mainPlayer);
             }
             );
 
             exit2.setOnMouseClicked(e -> {
-                RoomController.path1(stage, game);
+                RoomController.path1(stage, game,mainPlayer);
             }
             );
 
             exit3.setOnMouseClicked(e -> {
-                RoomController.path2(stage, game);
+                RoomController.path2(stage, game,mainPlayer);
             }
             );
 
             // Exit 4
             exit4.setOnMouseClicked(e -> {
-                RoomController.path3(stage, game);
+                RoomController.path3(stage, game,mainPlayer);
             }
             );
         }
     }
 
+
+    public Player getMainPlayer() {
+        return mainPlayer;
+    }
+
+    public static Timer getTimer() {
+        return timer;
+    }
+
     public static int getMoneyAmount() {
         return moneyAmount;
+    }
+
+    public void restart(){
+        startScreen(primaryStage);
+    /*    mainPlayer.setPlayerHealth(100);
+        getPrimaryStage().setScene(intro);*/
+    };
+    public static Stage getPrimaryStage(){
+        return primaryStage;
     }
 }

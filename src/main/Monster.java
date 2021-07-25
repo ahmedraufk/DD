@@ -166,12 +166,13 @@ public class Monster extends Player {
     public void deathScene(){
         VBox win = new VBox(75);
         Text winText = new Text("You have died! Press the Button to restart");
+        Text defeattext = new Text("Enemies Defeated:" + mainPlayer.getDefeated());
         Button btn = new Button("Restart");
         btn.setOnAction(e->{
             InitialConfigurationScreen newGame = new InitialConfigurationScreen();
             newGame.start(InitialConfigurationScreen.getPrimaryStage());
         });
-        win.getChildren().addAll(winText,btn);
+        win.getChildren().addAll(winText,defeattext, btn);
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
         room.getStage().setScene(winScene);

@@ -1,5 +1,8 @@
 package main;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -124,9 +127,21 @@ public class RoomController {
         //Win Screen Creation
         VBox win = new VBox(75);
         Text winText = new Text("Congrats! You have escaped the dungeon!");
-        win.getChildren().addAll(winText);
+        Text defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        Button retry = new Button("Play Again");
+        retry.setOnAction(e -> {
+                    InitialConfigurationScreen newGame = new InitialConfigurationScreen();
+                    newGame.start(InitialConfigurationScreen.getPrimaryStage());
+                }
+        );
+        Button exit = new Button("Exit");
+        exit.setOnAction(e -> {
+            Platform.exit();
+        });
+        win.getChildren().addAll(winText, defeated, retry, exit);
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
+
         eighthRoom.setNextExit(winScene, stage);
 
 

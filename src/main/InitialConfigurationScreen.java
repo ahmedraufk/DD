@@ -165,7 +165,6 @@ public class InitialConfigurationScreen extends Application {
         Text money = new Text("Money:" + moneyAmount);
         money.setId("money");
 
-
         mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
         mainPlayer.getHealthLbl().setTextFill(Color.WHITE);
 

@@ -13,6 +13,7 @@ public class Player {
     private Label healthLbl = new Label();
     private boolean typePlayer = true;
     private static int playerHealth;
+    private static int defeated;
 
     public Player(int health, int attack){
         this.health = health;
@@ -52,6 +53,8 @@ public class Player {
         return typePlayer;
     }
 
+    public int getDefeated() { return defeated; }
+
     public void attackPlayer(Player enemy){
 
 
@@ -62,6 +65,7 @@ public class Player {
 
             if(enemy.getPlayerHealth() <= 0){
                 enemy.setPlayerHealth(0);
+                defeated++;
             }
             enemy.getHealthLbl().setText("HP:" + enemy.getPlayerHealth());
             enemy.getHealthLbl().setTextFill(Color.WHITE);
@@ -70,6 +74,7 @@ public class Player {
             enemy.setHealth(enemy.getHealth()-this.getAttack());
             if(enemy.getHealth() <= 0){
                 enemy.setHealth(0);
+                defeated++;
             }
             enemy.getHealthLbl().setText("HP:" + enemy.getHealth());
         }

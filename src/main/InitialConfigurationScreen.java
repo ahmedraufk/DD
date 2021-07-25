@@ -35,6 +35,7 @@ public class InitialConfigurationScreen extends Application {
     @Override //Override the start method in the Application class
     public void start(Stage primaryStage) {
         mainPlayer.setPlayerHealth(100);
+        mainPlayer.setDefeated(0);
         this.primaryStage = primaryStage;
 
         introScreen(primaryStage);

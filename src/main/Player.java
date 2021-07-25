@@ -54,7 +54,10 @@ public class Player {
     }
 
     public int getDefeated() { return defeated; }
-    public void setDefeated() { defeated++; }
+    public void setDefeated(int death) { this.defeated = death; }
+    public static void inDefeat(){
+        defeated++;
+    }
 
     public void attackPlayer(Player enemy){
 

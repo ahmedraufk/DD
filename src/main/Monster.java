@@ -2,6 +2,7 @@ package main;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.StrokeTransition;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -78,8 +79,18 @@ public class Monster extends Player {
                 if(this.getHealth() > 0){
                     this.attackPlayer(mainPlayer);
                 } else {
-                    monster.setFill(Color.WHITE);
-                    mainPlayer.setDefeated();
+                    if(!monster.getFill().equals(Color.WHITE)){
+                        monster.setFill(Color.WHITE);
+                        mainPlayer.inDefeat();
+                        Text defeat = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+                        RoomController.setDefeated(defeat);
+                        try{
+                            RoomController.getEightRoom().setNextExit(createWinScreen(),room.getStage());
+                        } catch (NullPointerException ex){
+
+                        }
+                    }
+
                 }
                 if(mainPlayer.getPlayerHealth() == 0){
                     this.deathScene();
@@ -112,8 +123,18 @@ public class Monster extends Player {
                 if(this.getHealth() > 0){
                     this.attackPlayer(mainPlayer);
                 } else {
-                    monster.setFill(Color.WHITE);
-                    mainPlayer.setDefeated();
+                    if(!monster.getFill().equals(Color.WHITE)){
+                        monster.setFill(Color.WHITE);
+                        mainPlayer.inDefeat();
+                        Text defeat = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+                        RoomController.setDefeated(defeat);
+                        try{
+                            RoomController.getEightRoom().setNextExit(createWinScreen(),room.getStage());
+                        } catch (NullPointerException ex){
+
+                        }
+                    }
+
                 }
 
                 if(mainPlayer.getPlayerHealth() == 0){
@@ -148,8 +169,17 @@ public class Monster extends Player {
                 if(this.getHealth() > 0){
                     this.attackPlayer(mainPlayer);
                 } else {
-                    triangle.setFill(Color.WHITE);
-                    mainPlayer.setDefeated();
+                    if(!triangle.getFill().equals(Color.WHITE)){
+                        triangle.setFill(Color.WHITE);
+                        mainPlayer.inDefeat();
+                        Text defeat = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+                        RoomController.setDefeated(defeat);
+                        try{
+                            RoomController.getEightRoom().setNextExit(createWinScreen(),room.getStage());
+                        } catch (NullPointerException ex){
+
+                        }
+                    }
                 }
                 if(mainPlayer.getPlayerHealth() == 0){
                     this.deathScene();
@@ -179,5 +209,28 @@ public class Monster extends Player {
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
         room.getStage().setScene(winScene);
+    }
+    public Scene createWinScreen(){
+        VBox win = new VBox(75);
+        Text winText = new Text("Congrats! You have escaped the dungeon!");
+        Text defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        Label lbl = new Label(defeated.getText());
+        lbl.textProperty().bind(defeated.textProperty());
+
+        Button retry = new Button("Play Again");
+        retry.setOnAction(e -> {
+                    InitialConfigurationScreen newGame = new InitialConfigurationScreen();
+                    newGame.start(InitialConfigurationScreen.getPrimaryStage());
+                }
+        );
+        Button exit = new Button("Exit");
+        exit.setOnAction(e -> {
+            Platform.exit();
+        });
+        win.getChildren().addAll(winText, lbl, retry, exit);
+        win.setAlignment(Pos.CENTER);
+        Scene winScene = new Scene(win, 525, 525);
+        return winScene;
+
     }
 }

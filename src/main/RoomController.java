@@ -3,12 +3,15 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 public class RoomController {
+    private static Text defeated;
+    private static Room eightRoom;
 
     public static void path1(Stage stage, Scene startRoom,Player mainPlayer) {
         mainPlayer.getHealthLbl().setText("HP:" + mainPlayer.getPlayerHealth());
@@ -101,10 +104,10 @@ public class RoomController {
 
         Scene seventhRoomScene = seventhRoom.getRoomScene();
 
-        Room eighthRoom = new Room(seventhRoomScene,
+        eightRoom = new Room(seventhRoomScene,
                 null, SelectDoor.TOP, SelectDoor.BOTTOM, stage, true,mainPlayer);
 
-        Scene eighthRoomScene = eighthRoom.getRoomScene();
+        Scene eighthRoomScene = eightRoom.getRoomScene();
 
 
 
@@ -127,7 +130,10 @@ public class RoomController {
         //Win Screen Creation
         VBox win = new VBox(75);
         Text winText = new Text("Congrats! You have escaped the dungeon!");
-        Text defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        Label lbl = new Label(defeated.getText());
+        lbl.textProperty().bind(defeated.textProperty());
+
         Button retry = new Button("Play Again");
         retry.setOnAction(e -> {
                     InitialConfigurationScreen newGame = new InitialConfigurationScreen();
@@ -138,11 +144,11 @@ public class RoomController {
         exit.setOnAction(e -> {
             Platform.exit();
         });
-        win.getChildren().addAll(winText, defeated, retry, exit);
+        win.getChildren().addAll(winText, lbl, retry, exit);
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
 
-        eighthRoom.setNextExit(winScene, stage);
+        eightRoom.setNextExit(winScene, stage);
 
 
 
@@ -181,5 +187,12 @@ public class RoomController {
 
     public enum SelectDoor {
         LEFT, RIGHT, BOTTOM, TOP
+    }
+    public static void setDefeated(Text text){
+        defeated = text;
+    }
+
+    public static Room getEightRoom() {
+        return eightRoom;
     }
 }

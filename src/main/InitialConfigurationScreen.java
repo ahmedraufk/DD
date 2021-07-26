@@ -133,6 +133,7 @@ public class InitialConfigurationScreen extends Application {
                 + "Press Start Game to continue");
 
         Button introBtn = new Button("Start");
+        introBtn.setId("start");
 
         introBtn.setStyle("-fx-font-size:20");
 

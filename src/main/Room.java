@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
@@ -67,6 +68,7 @@ public class Room {
         screen = new BorderPane();
         door2p = door2;
 
+
         //Player Creation
         BorderPane battleScreen = new BorderPane();
         StackPane playerScreen = new StackPane();
@@ -102,11 +104,12 @@ public class Room {
         //Left Door
 
         exit1 = new Rectangle(25, 100);
-        exit1.setId("exit1");
+
         //Checks which door to select
         if (door1 == RoomController.SelectDoor.LEFT || door2 == RoomController.SelectDoor.LEFT) {
             exit1.setFill(Color.GREEN);
             exit1.setStroke(Color.GREEN);
+
         } else {
             exit1.setFill(Color.rgb(0, 0, 0, 0));
             exit1.setStroke(Color.rgb(0, 0, 0, 0));
@@ -185,6 +188,7 @@ public class Room {
         screen.setCenter(battleScreen);
 
         if (door1 == RoomController.SelectDoor.LEFT) {
+            exit1.setId("prev");
             exit1.setOnMouseClicked(e -> {
 
                     stage.setScene(prevExit);
@@ -192,14 +196,17 @@ public class Room {
 
             });
         } else if (door1 == RoomController.SelectDoor.RIGHT) {
+            exit2.setId("prev");
             exit2.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
         } else if (door1 == RoomController.SelectDoor.BOTTOM) {
+            exit3.setId("prev");
             exit3.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
         } else if (door1 == RoomController.SelectDoor.TOP) {
+            exit4.setId("prev");
             exit4.setOnMouseClicked(e -> {
                 stage.setScene(prevExit);
             });
@@ -253,6 +260,9 @@ public class Room {
         StackPane monster3Screen = monster3.createMonster();
         battleScreen.setRight(monster3Screen);
 
+        monsterScreen.setId("monster1");
+        monster2Screen.setId("monster2");
+        monster3Screen.setId("monster3");
 
         int moneyAmount = InitialConfigurationScreen.getMoneyAmount();
 
@@ -274,6 +284,7 @@ public class Room {
 
         if (door2p == RoomController.SelectDoor.LEFT) {
             left.getChildren().remove(exit1);
+            exit1Closed.setId("nextC");
 
             exit1Closed.setOnMouseClicked(e -> {
                 if (monster1.getHealth() == 0 && monster2.getHealth() == 0) {
@@ -289,6 +300,7 @@ public class Room {
 
 
         } else if (door2p == RoomController.SelectDoor.RIGHT) {
+            exit2Closed.setId("nextC");
             right.getChildren().remove(exit2);
             exit2Closed.setOnMouseClicked(e -> {
                 if (monster1.getHealth() == 0 && monster2.getHealth() == 0) {
@@ -302,6 +314,7 @@ public class Room {
             right.setAlignment(Pos.CENTER);
 
         } else if (door2p == RoomController.SelectDoor.BOTTOM) {
+            exit3Closed.setId("nextC");
             bottom.getChildren().remove(exit3);
 
             exit3Closed.setOnMouseClicked(e -> {
@@ -327,6 +340,7 @@ public class Room {
 
 
         } else if (door2p == RoomController.SelectDoor.TOP) {
+            exit4Closed.setId("nextC");
             uI.getChildren().remove(exit4);
             exit4Closed.setOnMouseClicked(e -> {
                 if (monster1.getHealth() == 0 && monster2.getHealth() == 0) {
@@ -350,12 +364,14 @@ public class Room {
     public void setNextExit(Scene exit, Stage stage) {
 
         if (door2p == RoomController.SelectDoor.LEFT) {
+            exit1.setId("next");
             exit1.setOnMouseClicked(e -> {
 
                     stage.setScene(exit);
 
             });
         } else if (door2p == RoomController.SelectDoor.RIGHT) {
+            exit2.setId("next");
             exit2.setOnMouseClicked(e -> {
 
                     stage.setScene(exit);
@@ -363,13 +379,14 @@ public class Room {
 
             });
         } else if (door2p == RoomController.SelectDoor.BOTTOM) {
-
+            exit3.setId("next");
             exit3.setOnMouseClicked(e -> {
 
                     stage.setScene(exit);
 
             });
         } else if (door2p == RoomController.SelectDoor.TOP) {
+            exit4.setId("next");
             exit4.setOnMouseClicked(e -> {
 
                     stage.setScene(exit);

@@ -219,7 +219,7 @@ public class Monster extends Player {
         exit.setOnAction(e -> {
             Platform.exit();
         });
-        win.getChildren().addAll(winText, lbl, lbldt, lbldd, retry);
+        win.getChildren().addAll(winText, lbl, lbldt, lbldd, retry,exit);
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
         room.getStage().setScene(winScene);

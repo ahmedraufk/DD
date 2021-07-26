@@ -86,4 +86,8 @@ public class Player {
         }
 
     }
+
+    public static void setDamagedealt(int damagedealt) {
+        Player.damagedealt = damagedealt;
+    }
 }

@@ -36,6 +36,7 @@ public class InitialConfigurationScreen extends Application {
     public void start(Stage primaryStage) {
         mainPlayer.setPlayerHealth(100);
         mainPlayer.setDefeated(0);
+        mainPlayer.setDamagedealt(0);
         this.primaryStage = primaryStage;
 
         introScreen(primaryStage);

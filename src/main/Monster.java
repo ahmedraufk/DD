@@ -199,23 +199,15 @@ public class Monster extends Player {
     public void deathScene(){
         VBox win = new VBox(75);
         Text winText = new Text("You have died! Press the Button to restart");
-        Text defeattext = new Text("Enemies Defeated:" + mainPlayer.getDefeated());
-        Button btn = new Button("Restart");
-        btn.setOnAction(e->{
-            InitialConfigurationScreen newGame = new InitialConfigurationScreen();
-            newGame.start(InitialConfigurationScreen.getPrimaryStage());
-        });
-        win.getChildren().addAll(winText,defeattext, btn);
-        win.setAlignment(Pos.CENTER);
-        Scene winScene = new Scene(win, 525, 525);
-        room.getStage().setScene(winScene);
-    }
-    public Scene createWinScreen(){
-        VBox win = new VBox(75);
-        Text winText = new Text("Congrats! You have escaped the dungeon!");
         Text defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        Text damageTaken = new Text("Damage taken:" + (100 - mainPlayer.getPlayerHealth()));
+        Text damageDealt = new Text("Damage dealt:" + mainPlayer.getDamagedealt());
+        Label lbldt = new Label(damageTaken.getText());
+        Label lbldd = new Label(damageDealt.getText());
         Label lbl = new Label(defeated.getText());
         lbl.textProperty().bind(defeated.textProperty());
+        lbldd.textProperty().bind(damageDealt.textProperty());
+        lbldt.textProperty().bind(damageTaken.textProperty());
 
         Button retry = new Button("Play Again");
         retry.setOnAction(e -> {
@@ -227,7 +219,35 @@ public class Monster extends Player {
         exit.setOnAction(e -> {
             Platform.exit();
         });
-        win.getChildren().addAll(winText, lbl, retry, exit);
+        win.getChildren().addAll(winText, lbl, lbldt, lbldd, retry);
+        win.setAlignment(Pos.CENTER);
+        Scene winScene = new Scene(win, 525, 525);
+        room.getStage().setScene(winScene);
+    }
+    public Scene createWinScreen(){
+        VBox win = new VBox(75);
+        Text winText = new Text("Congrats! You have escaped the dungeon!");
+        Text defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        Text damageTaken = new Text("Damage taken:" + (100 - mainPlayer.getPlayerHealth()));
+        Text damageDealt = new Text("Damage dealt:" + mainPlayer.getDamagedealt());
+        Label lbldt = new Label(damageTaken.getText());
+        Label lbldd = new Label(damageDealt.getText());
+        Label lbl = new Label(defeated.getText());
+        lbl.textProperty().bind(defeated.textProperty());
+        lbldd.textProperty().bind(damageDealt.textProperty());
+        lbldt.textProperty().bind(damageTaken.textProperty());
+
+        Button retry = new Button("Play Again");
+        retry.setOnAction(e -> {
+                    InitialConfigurationScreen newGame = new InitialConfigurationScreen();
+                    newGame.start(InitialConfigurationScreen.getPrimaryStage());
+                }
+        );
+        Button exit = new Button("Exit");
+        exit.setOnAction(e -> {
+            Platform.exit();
+        });
+        win.getChildren().addAll(winText, lbl, lbldt, lbldd, retry, exit);
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
         return winScene;

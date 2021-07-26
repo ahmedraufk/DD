@@ -14,6 +14,7 @@ public class Player {
     private boolean typePlayer = true;
     private static int playerHealth;
     private static int defeated;
+    private static int damagedealt;
 
     public Player(int health, int attack){
         this.health = health;
@@ -55,6 +56,7 @@ public class Player {
 
     public int getDefeated() { return defeated; }
     public void setDefeated(int death) { this.defeated = death; }
+    public int getDamagedealt() { return damagedealt; }
     public static void inDefeat(){
         defeated++;
     }
@@ -69,6 +71,7 @@ public class Player {
 
             if(enemy.getPlayerHealth() <= 0){
                 enemy.setPlayerHealth(0);
+                damagedealt += attack;
             }
             enemy.getHealthLbl().setText("HP:" + enemy.getPlayerHealth());
             enemy.getHealthLbl().setTextFill(Color.WHITE);
@@ -77,6 +80,7 @@ public class Player {
             enemy.setHealth(enemy.getHealth()-this.getAttack());
             if(enemy.getHealth() <= 0){
                 enemy.setHealth(0);
+                damagedealt += attack;
             }
             enemy.getHealthLbl().setText("HP:" + enemy.getHealth());
         }

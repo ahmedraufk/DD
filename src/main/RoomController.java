@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 public class RoomController {
     private static Text defeated;
+    private static Text damageDealt;
+    private static Text damageTaken;
     private static Room eightRoom;
 
     public static void path1(Stage stage, Scene startRoom,Player mainPlayer) {
@@ -131,8 +133,14 @@ public class RoomController {
         VBox win = new VBox(75);
         Text winText = new Text("Congrats! You have escaped the dungeon!");
         defeated = new Text("Enemies defeated:" + mainPlayer.getDefeated());
+        damageTaken = new Text("Damage taken:" + (100 - mainPlayer.getHealth()));
+        damageDealt = new Text("Damage dealt:" + mainPlayer.getDamagedealt());
+        Label lbldt = new Label(damageTaken.getText());
+        Label lbldd = new Label(damageDealt.getText());
         Label lbl = new Label(defeated.getText());
         lbl.textProperty().bind(defeated.textProperty());
+        lbldd.textProperty().bind(damageDealt.textProperty());
+        lbldt.textProperty().bind(damageTaken.textProperty());
 
         Button retry = new Button("Play Again");
         retry.setOnAction(e -> {
@@ -144,7 +152,7 @@ public class RoomController {
         exit.setOnAction(e -> {
             Platform.exit();
         });
-        win.getChildren().addAll(winText, lbl, retry, exit);
+        win.getChildren().addAll(winText, lbl, lbldt, lbldd, retry, exit);
         win.setAlignment(Pos.CENTER);
         Scene winScene = new Scene(win, 525, 525);
 

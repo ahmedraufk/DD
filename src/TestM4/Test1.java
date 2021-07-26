@@ -3,6 +3,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import main.InitialConfigurationScreen;
 import org.junit.Test;
+import org.testfx.api.FxRobotException;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -24,7 +25,11 @@ public class Test1 extends ApplicationTest {
         clickOn("Name:");
         type(KeyCode.A);
         clickOn("Start");
-        clickOn("#exit1");
+        try{
+            clickOn("#exit1");
+        } catch (FxRobotException ex){
+            clickOn("#winPath");
+        }
         clickOn("#monster1");
         clickOn("#nextC");
         verifyThat("HP:5", NodeMatchers.isNotNull());
@@ -41,7 +46,12 @@ public class Test1 extends ApplicationTest {
         clickOn("Name:");
         type(KeyCode.A);
         clickOn("Start");
-        clickOn("#exit1");
+        try{
+            clickOn("#exit1");
+        } catch (FxRobotException ex){
+            clickOn("#winPath");
+        }
+
         clickOn("#monster1");
         clickOn("#monster1");
         clickOn("#monster2");

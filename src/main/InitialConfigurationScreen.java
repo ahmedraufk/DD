@@ -226,6 +226,7 @@ public class InitialConfigurationScreen extends Application {
         int rand = (int) ((Math.random() * 4) + 1);
         // Exit 1
         if (rand == 1) {
+            exit3.setId("winPath");
             exit1.setOnMouseClicked(e -> {
                 RoomController.path1(stage, game,mainPlayer);
             }
@@ -247,6 +248,7 @@ public class InitialConfigurationScreen extends Application {
             }
             );
         } else if (rand == 2) {
+            exit2.setId("winPath");
             exit1.setOnMouseClicked(e -> {
                 RoomController.path2(stage, game,mainPlayer);
             }
@@ -265,6 +267,7 @@ public class InitialConfigurationScreen extends Application {
             }
             );
         } else if (rand == 3) {
+            exit1.setId("winPath");
             exit1.setOnMouseClicked(e -> {
                 RoomController.path3(stage, game,mainPlayer);
             }
@@ -283,6 +286,7 @@ public class InitialConfigurationScreen extends Application {
             }
             );
         } else if (rand == 4) {
+            exit4.setId("winPath");
             exit1.setOnMouseClicked(e -> {
                 RoomController.path4(stage, game,mainPlayer);
             }
